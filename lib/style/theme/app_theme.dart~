@@ -1,0 +1,88 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:restaurant_app/style/app_colors.dart';
+
+class RestaurantTheme {
+  static getTextTheme(brightness) {
+    final isLightTheme = brightness == Brightness.light;
+    final accentTextColor = isLightTheme ? Colors.indigo : Colors.white;
+    final primaryTextColor = isLightTheme ? Colors.black : Colors.white;
+    return TextTheme(
+      displayLarge: GoogleFonts.poppinsTextTheme().displayLarge?.copyWith(
+            color: primaryTextColor,
+            fontWeight: FontWeight.bold,
+          ),
+      displayMedium: GoogleFonts.poppinsTextTheme().displayMedium?.copyWith(
+            color: primaryTextColor,
+          ),
+      displaySmall: GoogleFonts.poppinsTextTheme().displaySmall?.copyWith(
+            color: primaryTextColor,
+          ),
+      headlineLarge: GoogleFonts.poppinsTextTheme().headlineLarge?.copyWith(
+            color: primaryTextColor,
+            fontWeight: FontWeight.bold,
+          ),
+      headlineMedium: GoogleFonts.poppinsTextTheme().headlineMedium?.copyWith(
+            color: primaryTextColor,
+          ),
+      headlineSmall: GoogleFonts.poppinsTextTheme().headlineSmall?.copyWith(
+            color: primaryTextColor,
+          ),
+      titleLarge: GoogleFonts.poppinsTextTheme().titleLarge?.copyWith(
+            color: accentTextColor,
+            fontWeight: FontWeight.bold,
+          ),
+      titleMedium: GoogleFonts.poppinsTextTheme().titleMedium?.copyWith(
+            color: accentTextColor,
+          ),
+      titleSmall: GoogleFonts.poppinsTextTheme().titleSmall?.copyWith(
+            color: accentTextColor,
+          ),
+      bodyLarge: GoogleFonts.poppinsTextTheme().bodyLarge?.copyWith(
+            color: primaryTextColor,
+            fontWeight: FontWeight.bold,
+          ),
+      bodyMedium: GoogleFonts.poppinsTextTheme().bodyMedium?.copyWith(
+            color: primaryTextColor,
+          ),
+      bodySmall: GoogleFonts.poppinsTextTheme().bodySmall?.copyWith(
+            color: primaryTextColor,
+          ),
+      labelLarge: GoogleFonts.poppinsTextTheme().labelLarge?.copyWith(
+            color: primaryTextColor,
+          ),
+      labelMedium: GoogleFonts.poppinsTextTheme().labelMedium?.copyWith(
+            color: primaryTextColor,
+          ),
+      labelSmall: GoogleFonts.poppinsTextTheme().labelSmall?.copyWith(
+            color: primaryTextColor,
+          ),
+    );
+  }
+
+  static get lightAppBarTheme => AppBarTheme(
+        toolbarTextStyle: getTextTheme(Brightness.light).displaySmall,
+        shadowColor: Colors.lightBlue.withAlpha(128),
+      );
+
+  static get darkAppBarTheme => AppBarTheme(
+        toolbarTextStyle: getTextTheme(Brightness.dark).displaySmall,
+        shadowColor: Colors.white.withAlpha(128),
+      );
+
+  static get lightTheme => ThemeData(
+        appBarTheme: lightAppBarTheme,
+        colorSchemeSeed: RestaurantColors.blue.color,
+        brightness: Brightness.light,
+        textTheme: getTextTheme(Brightness.light),
+        useMaterial3: true,
+      );
+
+  static get darkTheme => ThemeData(
+        appBarTheme: darkAppBarTheme,
+        colorSchemeSeed: RestaurantColors.blueaccent.color,
+        brightness: Brightness.dark,
+        textTheme: getTextTheme(Brightness.dark),
+        useMaterial3: true,
+      );
+}
